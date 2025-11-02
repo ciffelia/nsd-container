@@ -28,7 +28,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
   apt-get update && \
   apt-get install -y --no-install-recommends libevent-2.1-7t64
 
-RUN useradd --user-group nsd
+RUN useradd --user-group --no-create-home nsd
 
 # COPY --from=builder /nsd-build /
 RUN --mount=type=bind,from=builder,source=/nsd-build,target=/nsd-build,rw \
