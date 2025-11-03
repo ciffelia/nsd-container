@@ -11,7 +11,7 @@ docker compose up --build -d
 ### Reload zone files (without restarting nsd)
 
 ```sh
-docker compose exec nsd sh -c 'kill -HUP $(cat /var/run/nsd.pid)'
+docker compose exec nsd sh -c 'kill -HUP $(cat /var/nsd/chroot/var/run/nsd.pid)'
 ```
 
 ### Reload `nsd.conf` and zone files (restarts nsd)
