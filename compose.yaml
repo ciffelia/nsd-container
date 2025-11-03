@@ -2,7 +2,7 @@ services:
   nsd:
     build: .
     volumes:
-      - ./conf:/etc/nsd:ro
+      - ./conf:/var/nsd/chroot/etc/nsd:ro
     ports:
       - 53:53/tcp
       - 53:53/udp

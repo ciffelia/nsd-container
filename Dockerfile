@@ -34,8 +34,13 @@ RUN useradd --user-group --no-create-home nsd
 RUN --mount=type=bind,from=builder,source=/nsd-build,target=/nsd-build,rw \
   cd /nsd-build && \
   rm -r var/run tmp && \
-  cp -a . / && \
-  chown -R nsd:nsd /var/db/nsd
+  cp -a . /
+
+RUN mkdir -p /var/nsd/chroot && \
+  cd /var/nsd/chroot && \
+  mkdir -p etc/nsd tmp var/db/nsd var/run && \
+  chmod 1777 tmp && \
+  chown -R nsd:nsd var/db/nsd
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
